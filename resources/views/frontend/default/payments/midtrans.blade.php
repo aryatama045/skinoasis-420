@@ -105,7 +105,7 @@
                 url: route,
                 success: function(data) {
                     // notifyMe(data.status, data.message);
-                    window.location.href = '{{ route('midtrans.callback') }}';
+                    window.location.href = '{{ route('customers.orderHistory') }}';
                 },
                 error:function(error){
                     console.log(error);

@@ -265,10 +265,12 @@
         </li>
     @endcan
 
-    <!-- Users -->
-    <li class="side-nav-title side-nav-item nav-item mt-3">
-        <span class="tt-nav-title-text">{{ localize('Users') }}</span>
-    </li>
+    @canany(['customers', 'staffs'])
+        <!-- Users -->
+        <li class="side-nav-title side-nav-item nav-item mt-3">
+            <span class="tt-nav-title-text">{{ localize('Users') }}</span>
+        </li>
+    @endcan
 
     <!-- customers -->
     @can('customers')
@@ -365,10 +367,14 @@
         </li>
     @endcan
 
+
+
     <!-- Contents -->
+    @canany(['tags', 'pages', 'blogs', 'blog_categories', 'media_manager'])
     <li class="side-nav-title side-nav-item nav-item mt-3">
         <span class="tt-nav-title-text">{{ localize('Contents') }}</span>
     </li>
+    @endcan
 
     <!-- tags -->
     @php
@@ -447,9 +453,11 @@
     @endcan
 
     <!-- Promotions -->
+    @canany(['newsletters', 'subscribers','coupons','campaigns'])
     <li class="side-nav-title side-nav-item nav-item mt-3">
         <span class="tt-nav-title-text">{{ localize('Promotions') }}</span>
     </li>
+    @endcan
     <!-- newsletter -->
     @php
         $newsletterActiveRoutes = ['admin.newsletters.index', 'admin.subscribers.index'];
@@ -506,10 +514,12 @@
         </li>
     @endcan
 
+    @canany(['logistics', 'shipping_zones'])
     <!-- Fulfillment -->
     <li class="side-nav-title side-nav-item nav-item mt-3">
         <span class="tt-nav-title-text">{{ localize('Fulfillment') }}</span>
     </li>
+    @endcan
     <!-- Logistics -->
     @can('logistics')
         <li
@@ -547,9 +557,12 @@
     @endcan
 
     <!-- Reports -->
+    @canany(['order_reports', 'product_sale_reports', 'category_sale_reports', 'sales_amount_reports',
+        'delivery_status_reports', ])
     <li class="side-nav-title side-nav-item nav-item mt-3">
         <span class="tt-nav-title-text">{{ localize('Reports') }}</span>
     </li>
+    @endcan
 
     <!-- reports -->
     @php
@@ -615,9 +628,11 @@
 
 
     <!-- Support -->
+    @canany(['contact_us_messages'])
     <li class="side-nav-title side-nav-item nav-item mt-3">
         <span class="tt-nav-title-text">{{ localize('Support') }}</span>
     </li>
+    @endcan
 
     @can('contact_us_messages')
         <li class="side-nav-item nav-item {{ areActiveRoutes(['admin.queries.index'], 'tt-menu-item-active') }}">
@@ -641,11 +656,13 @@
     @if (isModuleActive('Support'))
         @include('support::sidebar.support_sidebar')
     @endif
+
+
+
     <!-- Appearance -->
     <li class="side-nav-title side-nav-item nav-item mt-3">
         <span class="tt-nav-title-text">{{ localize('Appearance') }}</span>
     </li>
-
 
     <!-- Grocery -->
     @php
@@ -667,25 +684,6 @@
     @endphp
 
     @canany(['homepage'])
-        <!-- <li class="side-nav-item nav-item {{ areActiveRoutes($groceryActiveRoutes, 'tt-menu-item-active') }}">
-            <a data-bs-toggle="collapse" href="#groceryOutlook"
-                aria-expanded="{{ areActiveRoutes($groceryActiveRoutes, 'true') }}" aria-controls="groceryOutlook"
-                class="side-nav-link tt-menu-toggle">
-                <span class="tt-nav-link-icon"><i data-feather="home"></i></span>
-                <span class="tt-nav-link-text">{{ localize('Grocery') }}</span>
-            </a>
-            <div class="collapse {{ areActiveRoutes($groceryActiveRoutes, 'show') }}" id="groceryOutlook">
-                <ul class="side-nav-second-level">
-
-                    @can('homepage')
-                        <li class="{{ areActiveRoutes($groceryActiveRoutes, 'tt-menu-item-active') }}">
-                            <a href="{{ route('admin.appearance.homepage.hero') }}"
-                                class="{{ areActiveRoutes($groceryActiveRoutes) }}">{{ localize('Homepage') }}</a>
-                        </li>
-                    @endcan
-                </ul>
-            </div>
-        </li> -->
 
         @can('homepage')
             <li class="side-nav-item nav-item {{ areActiveRoutes($groceryActiveRoutes, 'tt-menu-item-active') }}">
@@ -700,7 +698,6 @@
         @endcan
 
     @endcanany
-
 
 
     <!-- commonOutlook -->

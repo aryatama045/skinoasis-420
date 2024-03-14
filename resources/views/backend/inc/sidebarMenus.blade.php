@@ -688,11 +688,13 @@
         </li> -->
 
         @can('homepage')
-            <li class="{{ areActiveRoutes($groceryActiveRoutes, 'tt-menu-item-active') }}">
+            <li class="side-nav-item nav-item {{ areActiveRoutes($groceryActiveRoutes, 'tt-menu-item-active') }}">
                 <a href="{{ route('admin.appearance.homepage.hero') }}"
-                    class="{{ areActiveRoutes($groceryActiveRoutes) }}">
+                    class="side-nav-link {{ areActiveRoutes($groceryActiveRoutes) }}">
                     <span class="tt-nav-link-icon"><i data-feather="home"></i></span>
-                    <span class="tt-nav-link-text"> {{ localize('Homepage') }}</span>
+                    <span class="tt-nav-link-text">
+                        <span class="tt-nav-link-text"> {{ localize('Homepage') }}</span>
+                    </span>
                 </a>
             </li>
         @endcan

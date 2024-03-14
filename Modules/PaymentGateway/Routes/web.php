@@ -33,6 +33,7 @@ Route::prefix('payment-gateway')->group(function () {
 });
 
 # midtrans
+Route::get('/midtrans/payment/bayar', [MidtransController::class, 'bayar'])->name('midtrans.bayar');
 Route::get('/midtrans/payment/callback', [MidtransController::class, 'callback'])->name('midtrans.callback');
 Route::get('/midtrans/payment/finish', [MidtransController::class, 'success'])->name('midtrans.success');
 Route::get('/midtrans/payment/unfinish', [MidtransController::class, 'failed'])->name('midtrans.failed');

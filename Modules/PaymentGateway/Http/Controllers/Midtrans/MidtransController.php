@@ -48,13 +48,46 @@ class MidtransController extends Controller
             $snapToken = \Midtrans\Snap::getSnapToken($params);
 
             // dd($order_id, $user, $amount, $snapToken);
-            return View::make('payments.midtrans', compact('snapToken'));
+            return route('midtrans.bayar', compact('snapToken'));
         } catch (\Exception $e) {
 
             ddError($e);
-            return view('payments.midtrans', compact('snapToken'));
+
             return (new PaymentsController)->payment_failed();
         }
+    }
+
+    # bayar
+    public function bayar(){
+
+        $user = auth()->user();
+        $amount = $this->_calculateAmount();
+
+            // Set your Merchant Server Key
+            \Midtrans\Config::$serverKey = env('MIDTRANS_SERVER_KEY');
+            // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+            \Midtrans\Config::$isProduction =  paymentGateway('midtrans')->sandbox == 1 ? false : true;
+            // Set sanitization on (default)
+            \Midtrans\Config::$isSanitized = true;
+            // Set 3DS transaction for credit card to true
+            \Midtrans\Config::$is3ds = true;
+            \Midtrans\Config::$appendNotifUrl  = route('midtrans.payment-notification');
+
+
+            $order_id = Str::random(10);
+            $params = array(
+                'transaction_details' => array(
+                    'order_id' => $order_id,
+                    'gross_amount' => round($amount),
+                ),
+                'customer_details' => array(
+                    'first_name' => auth()->user()->name,
+                    'last_name' => '',
+                    'phone' => auth()->user()->phone ?? '',
+                ),
+            );
+            $snapToken = \Midtrans\Snap::getSnapToken($params);
+        return getView('payments.midtrans', compact('snapToken'));
     }
 
     # callback

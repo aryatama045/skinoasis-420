@@ -47,7 +47,7 @@ class MidtransController extends Controller
             );
             $snapToken = \Midtrans\Snap::getSnapToken($params);
 
-            dd($order_id, $user, $amount, $snapToken);
+            // dd($order_id, $user, $amount, $snapToken);
             return view('payments.midtrans', compact('snapToken'));
         } catch (\Exception $e) {
 
@@ -208,6 +208,8 @@ class MidtransController extends Controller
         })->where('user_id', $user->id)->paginate(paginationNumber());
         return view('backend.pages.subscriptions.gross_period_payment_pending', compact('payment_requests'));
     }
+
+
     private function _calculateAmount()
     {
         $amount = 0;

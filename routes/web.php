@@ -74,9 +74,18 @@ Route::get('/categories', [HomeController::class, 'allCategories'])->name('home.
 
 # products
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+Route::get('/products/allproduct', [ProductController::class, 'allProduct'])->name('products.allproduct');
 Route::get('/products/{slug}', [ProductController::class, 'show'])->name('products.show');
 Route::post('/products/get-variation-info', [ProductController::class, 'getVariationInfo'])->name('products.getVariationInfo');
 Route::post('/products/show-product-info', [ProductController::class, 'showInfo'])->name('products.showInfo');
+
+# hallo beauty
+Route::get('/hallobeauty', [HalloBeautyController::class, 'index'])->name('halloBeauty.index');
+Route::get('/hallobeauty/listdokter', [HalloBeautyController::class, 'listdokter'])->name('halloBeauty.listdokter');
+Route::get('/hallobeauty/listpaket', [HalloBeautyController::class, 'listpaket'])->name('halloBeauty.listpaket');
+Route::get('/hallobeauty/dokter/{slug}', [HalloBeautyController::class, 'dokter'])->name('halloBeauty.dokter');
+
+
 
 # carts
 Route::get('/carts', [CartsController::class, 'index'])->name('carts.index');
@@ -98,8 +107,11 @@ Route::get('/coupons', [HomeController::class, 'allCoupons'])->name('home.coupon
 
 # pages
 Route::get('/pages/about-us', [HomeController::class, 'aboutUs'])->name('home.pages.aboutUs');
+Route::get('/pages/partner', [HomeController::class, 'partner'])->name('home.pages.partner');
+Route::get('/pages/euterria-nano-academy', [HomeController::class, 'euterriaNanoAcademy'])->name('home.pages.euterriaNanoAcademy');
 Route::get('/pages/contact-us', [HomeController::class, 'contactUs'])->name('home.pages.contactUs');
 Route::get('/pages/{slug}', [HomeController::class, 'showPage'])->name('home.pages.show');
+
 
 # contact us message
 Route::post('/contact-us', [ContactUsController::class, 'store'])->name('contactUs.store');
@@ -121,6 +133,13 @@ Route::group(['prefix' => '', 'middleware' => ['customer', 'verified', 'isBanned
     Route::get('/customer-address', [CustomerController::class, 'address'])->name('customers.address');
     Route::get('/customer-profile', [CustomerController::class, 'profile'])->name('customers.profile');
     Route::post('/customer-profile', [CustomerController::class, 'updateProfile'])->name('customers.updateProfile');
+
+    Route::get('/customer-article', [CustomerController::class, 'article'])->name('customers.article');
+    Route::get('/customer-photo', [CustomerController::class, 'photo'])->name('customers.photo');
+    Route::get('/customer-video', [CustomerController::class, 'video'])->name('customers.video');
+    Route::get('/customer-review', [CustomerController::class, 'review'])->name('customers.review');
+    Route::get('/customer-event', [CustomerController::class, 'event'])->name('customers.event');
+
 
     # wishlist
     Route::get('/wishlist', [WishlistController::class, 'index'])->name('customers.wishlist');

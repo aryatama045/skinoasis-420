@@ -53,7 +53,7 @@ class MidtransController extends Controller
         }
     }
 
-    # callback  
+    # callback
     public function callback(Request $request)
     {
         try {
@@ -129,8 +129,6 @@ class MidtransController extends Controller
     public function paymentNotification(Request $request)
     {
         try {
-
-         
             \Midtrans\Config::$isProduction =  paymentGateway('midtrans')->sandbox == 1 ? false : true;
             \Midtrans\Config::$serverKey = env('MIDTRANS_SERVER_KEY');
             $notification = new \Midtrans\Notification();
@@ -145,7 +143,7 @@ class MidtransController extends Controller
             ];
             $pendingRecord = GrassPeriodPayment::where('order_id', $order_id)->where('transaction_status', 'pending')->first();
             $user  = User::where('id', $pendingRecord->user_id)->first();
-            
+
 
             if ($transaction == 'capture' && $pendingRecord) {
                 if ($type == 'credit_card') {
@@ -153,7 +151,7 @@ class MidtransController extends Controller
                         return (new PaymentsController)->payment_success();
                     }
                 }
-            } else if ($transaction == 'settlement' && $pendingRecord) {                  
+            } else if ($transaction == 'settlement' && $pendingRecord) {
                 return (new PaymentsController)->payment_success();
             } else if ($transaction == 'pending' && $pendingRecord) {
                 // no need
@@ -170,17 +168,20 @@ class MidtransController extends Controller
             Log::info('Midtrans notification error:' . $e->getMessage());
         }
     }
+
     # recurring notification
     public function recurringNotification(Request $request)
     {
         Log::info('Midtrans recurring Notification:' . $request);
     }
-        # pay account notification
+
+    # pay account notification
     public function payAccountNotification(Request $request)
     {
         Log::info('Midtrans Pay Account Notification:' . $request);
     }
-        # store Grass period
+
+    # store Grass period
     private function storeGrassPeriod($order_id, $transaction_status, $status_code, $response)
     {
         GrassPeriodPayment::updateOrCreate(
@@ -210,7 +211,7 @@ class MidtransController extends Controller
         $amount = 0;
         if (session('payment_type') == 'order_payment') {
             $orderGroup = OrderGroup::where('order_code', session('order_code'))->first(['grand_total_amount']);
-          return $amount = $orderGroup->grand_total_amount;
+            return $amount = $orderGroup->grand_total_amount;
         }
 
         if ($amount <= 0) {

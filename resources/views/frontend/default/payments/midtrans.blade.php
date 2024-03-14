@@ -105,7 +105,7 @@
                 url: route,
                 success: function(data) {
                     notifyMe(data.status, data.message);
-                    window.location.href = '{{ route('subscriptions.index') }}';
+                    window.location.href = '{{ route('midtrans.payment-notification') }}';
                 },
                 error:function(error){
                     console.log(error);

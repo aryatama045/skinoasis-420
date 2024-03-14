@@ -701,46 +701,6 @@
 
     @endcanany
 
-    <!-- halal -->
-    @php
-        $halalActiveRoutes = [
-            'admin.appearance.halal.homepage.hero',
-            'admin.appearance.halal.homepage.topCategories',
-            'admin.appearance.halal.homepage.aboutUs',
-            'admin.appearance.halal.homepage.features',
-            'admin.appearance.halal.homepage.popular',
-            'admin.appearance.halal.homepage.whyChooseUs',
-            'admin.appearance.halal.homepage.clientFeedback',
-            'admin.appearance.halal.homepage.storeClientFeedback',
-            'admin.appearance.halal.homepage.editClientFeedback',
-            'admin.appearance.halal.homepage.updateClientFeedback',
-            'admin.appearance.halal.homepage.deleteClientFeedback',
-            'admin.appearance.halal.homepage.onSaleProducts',
-            'admin.appearance.halal.homepage.blogs',
-        ];
-    @endphp
-
-    @canany(['homepage'])
-        <li class="side-nav-item nav-item {{ areActiveRoutes($halalActiveRoutes, 'tt-menu-item-active') }}">
-            <a data-bs-toggle="collapse" href="#halalOutlook"
-                aria-expanded="{{ areActiveRoutes($halalActiveRoutes, 'true') }}" aria-controls="halalOutlook"
-                class="side-nav-link tt-menu-toggle">
-                <span class="tt-nav-link-icon"><i data-feather="heart"></i></span>
-                <span class="tt-nav-link-text">{{ localize('Halal Foods') }}</span>
-            </a>
-            <div class="collapse {{ areActiveRoutes($halalActiveRoutes, 'show') }}" id="halalOutlook">
-                <ul class="side-nav-second-level">
-
-                    @can('homepage')
-                        <li class="{{ areActiveRoutes($halalActiveRoutes, 'tt-menu-item-active') }}">
-                            <a href="{{ route('admin.appearance.halal.homepage.hero') }}"
-                                class="{{ areActiveRoutes($halalActiveRoutes) }}">{{ localize('Homepage') }}</a>
-                        </li>
-                    @endcan
-                </ul>
-            </div>
-        </li>
-    @endcanany
 
 
     <!-- commonOutlook -->

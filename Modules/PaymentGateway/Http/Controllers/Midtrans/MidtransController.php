@@ -47,7 +47,7 @@ class MidtransController extends Controller
             );
             $snapToken = \Midtrans\Snap::getSnapToken($params);
 
-            dd($order_id, $snapToken);
+            dd($order_id, $user, $amount, $snapToken);
             return view('payments.midtrans', compact('snapToken'));
         } catch (\Exception $e) {
 

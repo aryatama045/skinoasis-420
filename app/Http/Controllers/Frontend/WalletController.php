@@ -13,6 +13,6 @@ class WalletController extends Controller
     public function index()
     {
         $wallets = auth()->user()->wallets()->latest()->paginate(paginationNumber());
-        return view('frontend.default.pages.users.walletHistory', ['wallets' => $wallets]);
+        return getView('pages.users.walletHistory', ['wallets' => $wallets]);
     }
 }

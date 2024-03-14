@@ -23,13 +23,13 @@ class OrderTrackingController extends Controller
             }
 
             if (!is_null($order)) {
-                $view = view('frontend.default.pages.users.orderTrack', ['order' => $order, 'searchCode' => $searchCode]);
+                $view = getView('pages.users.orderTrack', ['order' => $order, 'searchCode' => $searchCode]);
             } else {
                 flash(localize('No order found by this code'))->error();
-                $view = view('frontend.default.pages.users.orderTrack', ['searchCode' => $searchCode]);
+                $view = getView('pages.users.orderTrack', ['searchCode' => $searchCode]);
             }
         } else {
-            $view = view('frontend.default.pages.users.orderTrack');
+            $view = getView('pages.users.orderTrack');
         }
 
         return $view;

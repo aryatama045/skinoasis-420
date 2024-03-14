@@ -16,7 +16,7 @@ class RefundsController extends Controller
             return redirect()->route('customers.dashboard');
         }
         $refunds = auth()->user()->refunds()->latest()->paginate(paginationNumber());
-        return view('frontend.default.pages.users.refunds', ['refunds' => $refunds]);
+        return getView('pages.users.refunds', ['refunds' => $refunds]);
     }
     # submit refund request
     public function store(Request $request)

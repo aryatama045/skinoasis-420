@@ -71,7 +71,7 @@ class ProductController extends Controller
         $products = $products->paginate(paginationNumber($per_page));
 
         $tags = Tag::all();
-        return view('frontend.default.pages.products.index', [
+        return getView('pages.products.index', [
             'products'      => $products,
             'searchKey'     => $searchKey,
             'per_page'      => $per_page,
@@ -108,7 +108,7 @@ class ProductController extends Controller
                 $product_page_widgets = json_decode(getSetting('product_page_widgets'));
             }
 
-            return view('frontend.default.pages.products.show', ['product' => $product, 'relatedProducts' => $relatedProducts, 'product_page_widgets' => $product_page_widgets]);
+            return getView('pages.products.show', ['product' => $product, 'relatedProducts' => $relatedProducts, 'product_page_widgets' => $product_page_widgets]);
         }
         catch(\Throwable $e){
             return view('errors.not_found');
@@ -119,7 +119,7 @@ class ProductController extends Controller
     public function showInfo(Request $request)
     {
         $product = Product::find($request->id);
-        return view('frontend.default.pages.partials.products.product-view-box', ['product' => $product]);
+        return getView('pages.partials.products.product-view-box', ['product' => $product]);
     }
 
     # product variation info

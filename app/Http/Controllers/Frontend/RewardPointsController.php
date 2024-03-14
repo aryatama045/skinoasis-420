@@ -13,7 +13,7 @@ class RewardPointsController extends Controller
     public function index()
     {
         $rewards = auth()->user()->rewards()->latest()->paginate(paginationNumber());
-        return view('frontend.default.pages.users.rewards', ['rewards' => $rewards]);
+        return getView('pages.users.rewards', ['rewards' => $rewards]);
     }
 
 

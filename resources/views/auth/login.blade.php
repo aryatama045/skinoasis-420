@@ -7,7 +7,7 @@
 
 
 @section('contents')
-    <section class="login-section py-5">
+    <section class="login-section py-5" style="background-color: #c96">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-5 col-12 tt-login-img"
@@ -16,16 +16,14 @@
                     <form class="tt-login-form-wrap p-3 p-md-6 p-lg-6 py-7 w-100" action="{{ route('login') }}" method="POST"
                         id="login-form">
                         @csrf
-                        @if (getSetting('enable_recaptcha') == 1)
-                            {!! RecaptchaV3::field('recaptcha_token') !!}
-                        @endif
-                        <div class="mb-7">
+                        {!! RecaptchaV3::field('recaptcha_token') !!}
+                        <div class="mb-10">
                             <a href="{{ route('home') }}">
-                                <img src="{{ uploadedAsset(getSetting('navbar_logo')) }}" alt="logo">
+                                <img src="{{ uploadedAsset(getSetting('admin_panel_logo')) }}" alt="logo" width="181">
                             </a>
                         </div>
-                        <h2 class="mb-4 h3">{{ localize('Hey there!') }}
-                            <br>{{ localize('Welcome back to Grostore.') }}
+                        <h2 class="mb-4 h3">
+                            {{ localize('Hey there!') }}
                         </h2>
 
                         <div class="row g-3">
@@ -38,11 +36,6 @@
                                         <input type="email" id="email" name="email"
                                             placeholder="{{ localize('Enter your email') }}" class="theme-input mb-1"
                                             value="{{ old('email') }}" required>
-                                        <small class="">
-                                            <a href="javascript:void(0);" class="fs-sm login-with-phone-btn"
-                                                onclick="handleLoginWithPhone()">
-                                                {{ localize('Login with phone?') }}</a>
-                                        </small>
                                     </span>
 
                                     <span class="login-phone @if (old('login_with') == 'email' || old('login_with') == '') d-none @endif">
@@ -105,16 +98,6 @@
                                             onclick="copyCustomer()">Copy</button>
                                     </div>
                                 </div>
-                                <div class="col-12 mt-3">
-                                    <label class="fw-bold">Delivery Access</label>
-                                    <div class="d-flex flex-wrap align-items-center justify-content-between">
-                                        <small>delivery-man@themetags.com</small>
-                                        <small>123456</small>
-
-                                        <button class="btn btn-sm btn-secondary py-0 px-2" type="button"
-                                            onclick="copyDeliveryMan()">Copy</button>
-                                    </div>
-                                </div>
                             </div>
                         @endif
 
@@ -155,11 +138,6 @@
         // copyCustomer
         function copyCustomer() {
             $('#email').val('customer@themetags.com');
-            $('#password').val('123456');
-        }
-        // copyCustomer
-        function copyDeliveryMan() {
-            $('#email').val('delivery-man@themetags.com');
             $('#password').val('123456');
         }
 

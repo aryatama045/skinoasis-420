@@ -68,25 +68,25 @@ class HomeController extends Controller
     # all brands
     public function allBrands()
     {
-        return view('frontend.default.pages.brands');
+        return getView('pages.brands');
     }
 
     # all categories
     public function allCategories()
     {
-        return view('frontend.default.pages.categories');
+        return getView('pages.categories');
     }
 
     # all coupons
     public function allCoupons()
     {
-        return view('frontend.default.pages.coupons.index');
+        return getView('pages.coupons.index');
     }
 
     # all offers
     public function allOffers()
     {
-        return view('frontend.default.pages.offers');
+        return getView('pages.offers');
     }
 
     # all blogs
@@ -105,27 +105,27 @@ class HomeController extends Controller
         }
 
         $blogs = $blogs->paginate(paginationNumber(5));
-        return view('frontend.default.pages.blogs.index', ['blogs' => $blogs, 'searchKey' => $searchKey]);
+        return getView('pages.blogs.index', ['blogs' => $blogs, 'searchKey' => $searchKey]);
     }
 
     # blog details
     public function showBlog($slug)
     {
         $blog = Blog::where('slug', $slug)->first();
-        return view('frontend.default.pages.blogs.blogDetails', ['blog' => $blog]);
+        return getView('pages.blogs.blogDetails', ['blog' => $blog]);
     }
 
     # get all campaigns
     public function campaignIndex()
     {
-        return view('frontend.default.pages.campaigns.index');
+        return getView('pages.campaigns.index');
     }
 
     # campaign details
     public function showCampaign($slug)
     {
         $campaign = Campaign::where('slug', $slug)->first();
-        return view('frontend.default.pages.campaigns.show', ['campaign' => $campaign]);
+        return getView('pages.campaigns.show', ['campaign' => $campaign]);
     }
 
     # about us page
@@ -143,20 +143,20 @@ class HomeController extends Controller
             $why_choose_us = json_decode(getSetting('about_us_why_choose_us'));
         }
 
-        return view('frontend.default.pages.quickLinks.aboutUs', ['features' => $features, 'why_choose_us' => $why_choose_us]);
+        return getView('pages.quickLinks.aboutUs', ['features' => $features, 'why_choose_us' => $why_choose_us]);
     }
 
     # contact us page
     public function contactUs()
     {
-        return view('frontend.default.pages.quickLinks.contactUs');
+        return getView('pages.quickLinks.contactUs');
     }
 
     # quick link / dynamic pages
     public function showPage($slug)
     {
         $page = Page::where('slug', $slug)->first();
-        return view('frontend.default.pages.quickLinks.index', ['page' => $page]);
+        return getView('pages.quickLinks.index', ['page' => $page]);
     }
 
     function filterTemplates(){
@@ -168,6 +168,6 @@ class HomeController extends Controller
         $max_value = formatPrice($max_range, false, false, false, false);
         $tags = Tag::all();
 
-        return view('frontend.default.pages.products.inc.productSidebar',compact('min_value', 'max_value','max_range','tags'));
+        return getView('pages.products.inc.productSidebar',compact('min_value', 'max_value','max_range','tags'));
     }
 }

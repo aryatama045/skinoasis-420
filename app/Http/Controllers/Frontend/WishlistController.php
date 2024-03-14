@@ -13,7 +13,7 @@ class WishlistController extends Controller
     public function index()
     {
         $wishlist = auth()->user()->wishlist;
-        return view('frontend.default.pages.users.wishlist', ['wishlist' => $wishlist]);
+        return getView('pages.users.wishlist', ['wishlist' => $wishlist]);
     }
 
     # add to wishlist

@@ -20,7 +20,7 @@ class CartsController extends Controller
         } else {
             $carts          = Cart::where('guest_user_id', (int) $_COOKIE['guest_user_id'])->where('location_id', session('stock_location_id'))->get();
         }
-        return view('frontend.default.pages.checkout.carts', ['carts' => $carts]);
+        return getView('pages.checkout.carts', ['carts' => $carts]);
     }
 
     # add to cart

@@ -14,14 +14,14 @@ class CustomerController extends Controller
     # customer dashbaord
     public function index()
     {
-        return view('frontend.default.pages.users.dashboard');
+        return getView('pages.users.dashboard');
     }
 
     # customer's order history
     public function orderHistory()
     {
         $orders = auth()->user()->orders()->latest()->paginate(paginationNumber());
-        return view('frontend.default.pages.users.orderHistory', ['orders' => $orders]);
+        return getView('pages.users.orderHistory', ['orders' => $orders]);
     }
 
     # customer's address
@@ -31,7 +31,7 @@ class CustomerController extends Controller
         $addresses = $user->addresses()->latest()->get();
         $countries = Country::isActive()->get();
 
-        return view('frontend.default.pages.users.address', [
+        return getView('pages.users.address', [
             'addresses' => $addresses,
             'countries' => $countries,
         ]);
@@ -41,7 +41,7 @@ class CustomerController extends Controller
     public function profile()
     {
         $user = auth()->user();
-        return view('frontend.default.pages.users.profile', ['user' => $user]);
+        return getView('pages.users.profile', ['user' => $user]);
     }
 
     # update profile

@@ -45,7 +45,7 @@ class CheckoutController extends Controller
         if(isModuleActive('PaymentGateway')) {
             $activeGateways = \Modules\PaymentGateway\Entities\PaymentGateway::where('is_active', 1)->where('gateway', '!=', 'Cash_on_Delivery')->isActive()->get();
         }
-        return view('frontend.default.pages.checkout.checkout', [
+        return getView('pages.checkout.checkout', [
             'carts'          => $carts,
             'user'           => $user,
             'addresses'      => $addresses,
@@ -316,7 +316,7 @@ class CheckoutController extends Controller
             Notification::send($user, new OrderPlacedNotification($orderGroup->order));
         } catch (\Exception $e) {
         }
-        return view('frontend.default.pages.checkout.invoice', ['orderGroup' => $orderGroup]);
+        return getView('pages.checkout.invoice', ['orderGroup' => $orderGroup]);
     }
 
 
@@ -325,7 +325,7 @@ class CheckoutController extends Controller
     {
         $orderGroup = OrderGroup::where('user_id', auth()->user()->id)->where('order_code', $code)->first();
         $user = auth()->user();
-        return view('frontend.default.pages.checkout.invoice', ['orderGroup' => $orderGroup]);
+        return getView('pages.checkout.invoice', ['orderGroup' => $orderGroup]);
     }
 
     # update payment status

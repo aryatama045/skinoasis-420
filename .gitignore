@@ -1,0 +1,17 @@
+/vendor/
+node_modules/
+npm-debug.log
+yarn-error.log
+
+.env
+
+# Laravel 5 & Lumen specific with changed public path
+public_html/storage
+public_html/hot
+
+Homestead.yaml
+Homestead.json
+/.vagrant
+.phpunit.result.cache
+public/frontend/skinoasis/assets/prepros.config
+public/frontend/skinoasis/assets/sass/prepros.config

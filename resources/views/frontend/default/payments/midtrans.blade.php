@@ -104,7 +104,7 @@
                 },
                 url: route,
                 success: function(data) {
-                    // notifyMe(data.status, data.message);
+                    notifyMe(data.status, data.message);
                     window.location.href = '{{ route('subscriptions.index') }}';
                 },
                 error:function(error){

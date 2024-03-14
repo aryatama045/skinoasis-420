@@ -692,8 +692,8 @@
                 <a href="{{ route('admin.appearance.homepage.hero') }}"
                     class="{{ areActiveRoutes($groceryActiveRoutes) }}">
                     <span class="tt-nav-link-icon"><i data-feather="home"></i></span>
-                    <span class="tt-nav-link-text">{{ localize('Grocery') }}</span>
-                    {{ localize('Homepage') }}</a>
+                    <span class="tt-nav-link-text"> {{ localize('Homepage') }}</span>
+                </a>
             </li>
         @endcan
 

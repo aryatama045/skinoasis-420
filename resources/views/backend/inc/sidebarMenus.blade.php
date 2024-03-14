@@ -625,7 +625,7 @@
                 class="side-nav-link {{ areActiveRoutes(['admin.queries.index']) }}">
                 <span class="tt-nav-link-icon"><i data-feather="hash"></i></span>
                 <span class="tt-nav-link-text">
-                    <span>{{ localize('Queries') }}</span>
+                    <span>{{ localize('Contact Us') }}</span>
 
                     @php
                         $newMsgCount = \App\Models\ContactUsMessage::where('is_seen', 0)->count();
@@ -667,7 +667,7 @@
     @endphp
 
     @canany(['homepage'])
-        <li class="side-nav-item nav-item {{ areActiveRoutes($groceryActiveRoutes, 'tt-menu-item-active') }}">
+        <!-- <li class="side-nav-item nav-item {{ areActiveRoutes($groceryActiveRoutes, 'tt-menu-item-active') }}">
             <a data-bs-toggle="collapse" href="#groceryOutlook"
                 aria-expanded="{{ areActiveRoutes($groceryActiveRoutes, 'true') }}" aria-controls="groceryOutlook"
                 class="side-nav-link tt-menu-toggle">
@@ -685,7 +685,18 @@
                     @endcan
                 </ul>
             </div>
-        </li>
+        </li> -->
+
+        @can('homepage')
+            <li class="{{ areActiveRoutes($groceryActiveRoutes, 'tt-menu-item-active') }}">
+                <a href="{{ route('admin.appearance.homepage.hero') }}"
+                    class="{{ areActiveRoutes($groceryActiveRoutes) }}">
+                    <span class="tt-nav-link-icon"><i data-feather="home"></i></span>
+                    <span class="tt-nav-link-text">{{ localize('Grocery') }}</span>
+                    {{ localize('Homepage') }}</a>
+            </li>
+        @endcan
+
     @endcanany
 
     <!-- halal -->

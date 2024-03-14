@@ -104,8 +104,8 @@
                 },
                 url: route,
                 success: function(data) {
-                    notifyMe(data.status, data.message);
-                    window.location.href = '{{ route('midtrans.payment-notification') }}';
+                    // notifyMe(data.status, data.message);
+                    window.location.href = '{{ route('midtrans.callback') }}';
                 },
                 error:function(error){
                     console.log(error);

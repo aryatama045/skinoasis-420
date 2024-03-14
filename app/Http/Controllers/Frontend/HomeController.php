@@ -25,11 +25,11 @@ class HomeController extends Controller
 
         if(session('theme') != $name){
             if (Auth::check()) {
-                 Cart::where('user_id', Auth::user()->id)->delete();
+                Cart::where('user_id', Auth::user()->id)->delete();
             } else {
-                 Cart::where('guest_user_id', (int) $_COOKIE['guest_user_id'])->delete();
+                Cart::where('guest_user_id', (int) $_COOKIE['guest_user_id'])->delete();
             }
-         }
+        }
 
         if(!is_null($theme)){
             session(['theme' => $name]);
@@ -45,31 +45,21 @@ class HomeController extends Controller
     {
         $blogs = Blog::isActive()->latest()->take(3);
 
-        if(getTheme() == "default"){
-            $blogs = $blogs->get();
+        $blogs = $blogs->get();
 
-            $sliders = [];
-            if (getSetting('hero_sliders') != null) {
-                $sliders = json_decode(getSetting('hero_sliders'));
-            }
+        $sliders = [];
+        if (getSetting('hero_sliders') != null) {
+            $sliders = json_decode(getSetting('hero_sliders'));
+        }
 
-            $banner_section_one_banners = [];
-            if (getSetting('banner_section_one_banners') != null) {
-                $banner_section_one_banners = json_decode(getSetting('banner_section_one_banners'));
-            }
+        $banner_section_one_banners = [];
+        if (getSetting('banner_section_one_banners') != null) {
+            $banner_section_one_banners = json_decode(getSetting('banner_section_one_banners'));
+        }
 
-            $client_feedback = [];
-            if (getSetting('client_feedback') != null) {
-                $client_feedback = json_decode(getSetting('client_feedback'));
-            }
-        }else if(getTheme() == "halal"){
-            $sliders = [];
-            $banner_section_one_banners = [];
-
-            $client_feedback = [];
-            if (getSetting('halal_client_feedback') != null) {
-                $client_feedback = json_decode(getSetting('halal_client_feedback'));
-            }
+        $client_feedback = [];
+        if (getSetting('client_feedback') != null) {
+            $client_feedback = json_decode(getSetting('client_feedback'));
         }
 
         return getView('pages.home', ['blogs' => $blogs, 'sliders' => $sliders, 'banner_section_one_banners' => $banner_section_one_banners, 'client_feedback' => $client_feedback]);

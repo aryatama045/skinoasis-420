@@ -43,7 +43,7 @@
 </head>
 
 <body>
-    <button id="checkout-button" style="display: none;"></button>
+    <button id="checkout-button" ></button>
     <div class="loader"></div>
     <br>
     <br>

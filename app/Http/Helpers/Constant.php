@@ -20,7 +20,7 @@ use League\CommonMark\Normalizer\SlugNormalizer;
 use Illuminate\Support\Facades\Artisan;
 
 
-
+#-- Troubleshoot Code
 if (!function_exists('ddError')) {
     # get error  information
     function ddError($e)
@@ -28,7 +28,6 @@ if (!function_exists('ddError')) {
         return dd(errorArray($e));
     }
 }
-
 
 if (!function_exists('errorArray')) {
     # get error  information
@@ -41,6 +40,8 @@ if (!function_exists('errorArray')) {
         ];
     }
 }
+#-- End Troubleshoot Code
+
 
 if (!function_exists('user')) {
     # get user information
@@ -77,8 +78,9 @@ if (!function_exists('noImage')) {
     }
 }
 
+
+# Is Admin
 if (!function_exists('isAdmin')) {
-    # get is admin
     function isAdmin()
     {
         return user()->user_type == 'admin';
@@ -93,7 +95,29 @@ if (!function_exists('isCustomer')) {
     }
 }
 
+# Is Dokter
+if (!function_exists('isDokter')) {
+    function isDokter()
+    {
+        return user()->user_type == "dokter";
+    }
+}
 
+# Is Mitra
+if (!function_exists('isMitra')) {
+    function isMitra()
+    {
+        return user()->user_type == "mitra";
+    }
+}
+
+# Is Klinik
+if (!function_exists('isKlinik')) {
+    function isKlinik()
+    {
+        return user()->user_type == "klinik";
+    }
+}
 
 if (!function_exists('isPublished')) {
     # get is published
@@ -143,7 +167,7 @@ if (!function_exists('getRender')) {
     # get view of theme with render
     function getRender($path, $data = [])
     {
-        return view('frontend.default'. '.' . $path, $data)->render();
+        return view('frontend.' . getTheme() . '.' . $path, $data)->render();
     }
 }
 
@@ -1209,6 +1233,7 @@ if (!function_exists('paidPaymentStatus')) {
         return "paid";
     }
 }
+
 if (!function_exists('unpaidPaymentStatus')) {
     // unpaid Payment Status
     function unpaidPaymentStatus()
@@ -1224,6 +1249,7 @@ if (!function_exists('orderPlacedStatus')) {
         return "order_placed";
     }
 }
+
 if (!function_exists('orderPendingStatus')) {
     // orderPendingStatus
     function orderPendingStatus()
@@ -1231,6 +1257,7 @@ if (!function_exists('orderPendingStatus')) {
         return "pending";
     }
 }
+
 if (!function_exists('orderProcessingStatus')) {
     // orderProcessingStatus
     function orderProcessingStatus()
@@ -1299,7 +1326,7 @@ if (!function_exists('allMonths')) {
 }
 
  # module check
- if(!function_exists('isModuleActive')){
+if(!function_exists('isModuleActive')){
     function isModuleActive($name) {
 
         $module = Module::find($name);
@@ -1326,9 +1353,9 @@ if (!function_exists('allMonths')) {
         }
         return $status;
     }
- }
+}
 
- # text to a slug.
+# text to a slug.
 if(!function_exists('convertToSlug')) {
     function convertToSlug($text) {
 

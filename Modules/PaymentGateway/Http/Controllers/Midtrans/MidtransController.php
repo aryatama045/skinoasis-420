@@ -51,6 +51,8 @@ class MidtransController extends Controller
             return view('payments.midtrans', compact('snapToken'));
         } catch (\Exception $e) {
 
+            ddError($e);
+            return view('payments.midtrans', compact('snapToken'));
             return (new PaymentsController)->payment_failed();
         }
     }

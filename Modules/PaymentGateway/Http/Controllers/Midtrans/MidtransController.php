@@ -48,11 +48,11 @@ class MidtransController extends Controller
             $snapToken = \Midtrans\Snap::getSnapToken($params);
 
             // dd($order_id, $user, $amount, $snapToken);
-            return view('payments.midtrans', compact('snapToken'));
+            return view('payments.midtransForm', compact('snapToken'));
         } catch (\Exception $e) {
 
             ddError($e);
-            return view('payments.midtrans', compact('snapToken'));
+            return view('payments.midtransForm', compact('snapToken'));
             return (new PaymentsController)->payment_failed();
         }
     }

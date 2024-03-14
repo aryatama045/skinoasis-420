@@ -29,6 +29,8 @@ use App\Http\Controllers\Backend\Refunds\RefundsController;
 use App\Http\Controllers\Backend\Reports\ReportsController;
 use App\Http\Controllers\Backend\Rewards\RewardsController;
 use App\Http\Controllers\Backend\BlogSystem\BlogsController;
+use App\Http\Controllers\Backend\Partner\PartnerController;
+use App\Http\Controllers\Backend\Partner\JoinController;
 use App\Http\Controllers\Backend\Logistics\CitiesController;
 use App\Http\Controllers\Backend\Logistics\StatesController;
 use App\Http\Controllers\Backend\Settings\LicenseController;
@@ -325,6 +327,40 @@ Route::group(
             Route::get('/categories/edit/{id}', [BlogCategoriesController::class, 'edit'])->name('admin.blogCategories.edit');
             Route::post('/categories/update-category', [BlogCategoriesController::class, 'update'])->name('admin.blogCategories.update');
             Route::get('/categories/delete/{id}', [BlogCategoriesController::class, 'delete'])->name('admin.blogCategories.delete');
+        });
+
+        # partner pages
+        Route::group(['prefix' => 'partner'], function () {
+            Route::get('/', [PartnerController::class, 'index'])->name('admin.partner.index');
+            Route::get('/add-partner', [PartnerController::class, 'create'])->name('admin.partner.create');
+            Route::post('/add-partner', [PartnerController::class, 'store'])->name('admin.partner.store');
+            Route::get('/edit/{id}', [PartnerController::class, 'edit'])->name('admin.partner.edit');
+            Route::post('/update', [PartnerController::class, 'update'])->name('admin.partner.update');
+            Route::get('/delete/{id}', [PartnerController::class, 'delete'])->name('admin.partner.delete');
+        });
+
+        # join
+        Route::group(['prefix' => 'join'], function () {
+            #join influencer
+            Route::get('/influencer', [JoinController::class, 'index'])->name('admin.join.influencer');
+            Route::get('/influencer/add', [JoinController::class, 'create'])->name('admin.join.influencer_create');
+            Route::post('/influencer/add', [JoinController::class, 'store'])->name('admin.join.influencer_store');
+            Route::get('/influencer/edit/{id}', [JoinController::class, 'edit'])->name('admin.join.influencer_edit');
+            Route::get('/influencer/delete/{id}', [JoinController::class, 'delete'])->name('admin.join.influencerdelete');
+
+            # join partner
+            Route::get('/partner', [JoinController::class, 'index_partner'])->name('admin.join.partner');
+            Route::get('/partner/add', [JoinController::class, 'create_partner'])->name('admin.join.partner_create');
+            Route::post('/partner/add', [JoinController::class, 'store_partner'])->name('admin.join.partner_store');
+            Route::get('/partner/edit/{id}', [JoinController::class, 'edit_partner'])->name('admin.join.partner_edit');
+            Route::get('/partner/delete/{id}', [JoinController::class, 'delete'])->name('admin.join.partner_delete');
+
+            # join community
+            Route::get('/community', [JoinController::class, 'index_community'])->name('admin.join.community');
+            Route::get('/community/add', [JoinController::class, 'create_community'])->name('admin.join.community_create');
+            Route::post('/community/add', [JoinController::class, 'store_community'])->name('admin.join.community_store');
+            Route::get('/community/edit/{id}', [JoinController::class, 'edit_community'])->name('admin.join.community_edit');
+            Route::get('/community/delete/{id}', [JoinController::class, 'delete'])->name('admin.join.community_delete');
         });
 
         # media manager

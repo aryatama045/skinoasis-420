@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use App\Models\Brand;
 use App\Models\Campaign;
 use App\Models\Cart;
 use App\Models\Page;
@@ -43,14 +44,15 @@ class HomeController extends Controller
     # homepage
     public function index()
     {
-        $blogs = Blog::isActive()->latest()->take(3);
-
-        $blogs = $blogs->get();
+        $blogs = Blog::isActive()->latest()->take(3)->get();
 
         $sliders = [];
         if (getSetting('hero_sliders') != null) {
             $sliders = json_decode(getSetting('hero_sliders'));
         }
+
+        $brands = Brand::get();
+        // dd($brands);
 
         $banner_section_one_banners = [];
         if (getSetting('banner_section_one_banners') != null) {
@@ -62,7 +64,12 @@ class HomeController extends Controller
             $client_feedback = json_decode(getSetting('client_feedback'));
         }
 
-        return getView('pages.home', ['blogs' => $blogs, 'sliders' => $sliders, 'banner_section_one_banners' => $banner_section_one_banners, 'client_feedback' => $client_feedback]);
+        $trending1 = Blog::where('placement','1')->isActive()->latest()->take(1)->get();
+        $trending2 = Blog::where('placement','2')->isActive()->latest()->take(1)->get();
+        $trending3 = Blog::where('placement','3')->isActive()->latest()->take(1)->get();
+
+
+        return getView('pages.home', ['blogs' => $blogs, 'trending1' => $trending1, 'trending2' => $trending2, 'trending3' => $trending3, 'sliders' => $sliders, 'brands' => $brands, 'banner_section_one_banners' => $banner_section_one_banners, 'client_feedback' => $client_feedback]);
     }
 
     # all brands

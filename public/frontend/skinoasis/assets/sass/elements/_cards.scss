@@ -1,0 +1,263 @@
+.accordion {
+	margin-bottom: 3rem;
+}
+
+.shadow-content {
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+	padding: 2rem;
+    margin-bottom: 4rem;
+}
+
+.janjitemu-content {
+    box-shadow: .5rem .4rem .5rem .6rem rgb(0 0 0 / 40%) !important;
+	padding: 2rem;
+    margin-bottom: 4rem;
+	background-color:#FFF9E5;
+
+	.btn{
+		min-width: 9rem !important;
+		line-height: .8;
+		font-size: 1.2rem;
+		font-weight: 400;;
+	}
+
+	.btn-outline-yellow {
+		border: 0.1rem solid #FBE18A !important;
+		color: black !important;
+		background-color: #ffffffbd;
+		box-shadow: 0.1rem 0.4rem 0.3rem 0.1rem rgb(0 0 0 / 15%);
+	}
+
+	.btn-check:checked + .btn{
+		background-color: #FBE18A;
+	}
+
+
+	.heading{
+
+		.element-icon {
+			display: inline;
+			padding-right: 1rem;
+			width: 3.1em;
+		}
+
+		.title{
+			font-size: 2.3rem;
+			margin-left: 0;
+			display: contents;
+		}
+
+		.title-two{
+			font-size: 1.8rem;
+			font-weight: 800;
+			line-height: 1.5;
+			letter-spacing: 0.1em;
+			color: #222;
+			margin: 0;
+			margin-left: 0rem;
+			font-family: "avenir lt pro";
+		}
+
+		.subtitle{
+			font-size: 1.6rem;
+			font-weight: 100;
+			margin-left: 0;
+		}
+
+		.kalimat {
+			font-size: 1.6rem;
+			letter-spacing: 0.16rem;
+			padding: 0.5rem;
+			margin-top: 1rem;
+		}
+	}
+}
+
+.separator {
+    border-bottom: 1px solid;
+}
+
+.dokter-content {
+	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+	padding: 2rem 2rem 6rem 2rem;
+	margin-bottom: 4rem;
+}
+
+.card {
+	border-radius: 0;
+	margin-bottom: 0;
+	border: none;
+	border-top: .1rem solid #ebebeb;
+
+	&:last-child {
+		border-bottom: .1rem solid #ebebeb;;
+	}
+}
+
+.card-header {
+	position: relative;
+	padding: 0;
+	border: none;
+	font-weight: 700;
+	line-height: 1.5;
+	background-color: transparent;
+	margin: 0;
+	@include clearfix();
+}
+
+.card-title {
+	font-size: 1.8rem;
+	line-height: 1.2;
+	margin-bottom: 0;
+
+	a {
+		display: block;
+		padding: 1.7rem 4rem 1.7rem 1.2rem;
+		position: relative;
+		color: $primary-color;
+		border: none;
+		background-color: transparent;
+		outline: none !important;
+
+		i {
+			min-width: 17px;
+			margin-right: 2.4rem;
+		}
+
+		&:before {
+			content: '\e802';
+			display: inline-block;
+			position: absolute;
+			right: 1.2rem;
+			top: 50%;
+			color: $primary-color;
+			font-family: "molla";
+			line-height: 1;
+			transform: translateY(-50%);
+			-ms-transform: translateY(-50%);
+			transition: all 0.3s;
+		}
+
+		&.collapsed {
+			color: #333;
+
+			&:hover,
+			&:focus {
+				color: $primary-color;
+			}
+
+			&:before {
+				content: '\f110';
+				color: #8c8c8c;
+				transform: translateY(-50%);
+				-ms-transform: translateY(-50%);
+			}
+		}
+	}
+}
+
+.card-body {
+	padding: .4rem 4rem 1.8rem 1.2rem;
+	border: none;
+	border-radius: 0;
+
+	.accordion-icon & {
+		padding-left: 5.5rem !important;
+	}
+}
+
+.accordion-plus {
+	.card-title {
+		a {
+			&:before {
+				content: '\f28e';
+			}
+
+			&.collapsed {
+				&:before {
+					content: '\f2c2';
+				}
+			}
+		}
+	}
+}
+
+.accordion-rounded .card {
+	&:first-child {
+		border-radius: .3rem .3rem 0 0;
+	}
+
+	&:last-child {
+		border-radius:  0 0 .3rem .3rem;
+	}
+}
+
+.card {
+	&.card-box {
+		.card-title {
+			a {
+				padding-left: 2rem;
+
+				&:before {
+					right: 2rem;
+				}
+
+				i {
+					margin-right: 1.4rem;
+				}
+			}
+		}
+
+		.card-body {
+			padding: 1rem 2rem 2rem;
+		}
+	}
+
+	&.card-sm {
+		.card-title {
+			font-size: 1.6rem;
+			letter-spacing: -.01em;
+
+			a {
+				padding-top: 2.1rem;
+				padding-bottom: 2.1rem;
+
+				&:before {
+					right: 2rem;
+				}
+			}
+		}
+
+		.card-body {
+			padding: 1rem 2rem 2rem;
+		}
+	}
+
+	&.bg-light,
+	&.bg-white {
+		background-color: #fff !important;
+		border: .1rem solid #ebebeb;
+
+		.card-title {
+			a {
+				background-color: #fff;
+			}
+		}
+	}
+
+	&.bg-light {
+		.card-title {
+			a {
+				&.collapsed {
+					background-color: #fafafa;
+				}
+			}
+		}
+	}
+}
+
+@include mq('lg') {
+	.card-title {
+		font-size: 2rem;
+	}
+}

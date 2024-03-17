@@ -345,6 +345,7 @@ class ProductsController extends Controller
     # update product
     public function update(Request $request)
     {
+        
         try {
 
             DB::transaction(function () use ($request) {
@@ -553,9 +554,13 @@ class ProductsController extends Controller
             });
 
 
+            
+
+
             flash(localize('Product has been updated successfully'))->success();
             return redirect()->route('admin.products.index');
         } catch (\Throwable $th) {
+            
             flash(localize($th->getMessage()))->error();
             return back();
         }

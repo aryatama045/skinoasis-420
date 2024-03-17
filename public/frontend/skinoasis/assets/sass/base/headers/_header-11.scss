@@ -1,0 +1,538 @@
+/* Header 11 */
+.header-11 {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	z-index:1040;
+	background-color: transparent;
+	font-family: 'avenir lt pro' !important;
+
+	.header-middle {
+		border-bottom-color: rgba(#fafafa, .2);
+	}
+
+	.header-left,
+	.header-right {
+		flex: 1 1 1;
+	}
+
+	.header-center {
+		flex: 0 1 auto;
+	}
+
+	.header-right {
+		display: flex;
+		justify-content: flex-end;
+	}
+
+	.cart-dropdown,
+	.compare-dropdown {
+		padding-left: 2.3rem;
+
+		&:not(:hover):not(.show) {
+			.dropdown-toggle {
+				color: #fff;
+			}
+		}
+
+		.dropdown-menu {
+			margin-top: 0;
+		}
+	}
+
+	.header-search {
+		.header-search-wrapper {
+			border-color:  #fff;
+		}
+	}
+
+	.wishlist-link:not(:hover):not(:focus),
+	.search-toggle:not(:hover):not(:focus):not(.active),
+	.mobile-menu-toggler,
+	.wishlist-link:not(:hover):not(:focus),
+	.menu > li:not(:hover):not(.active):not(.show) > a,
+	.mobile-menu-toggler {
+		color: #fff;
+		font-family: 'avenir lt pro' !important;
+	}
+
+	.logo {
+		margin-top: 2.5rem;
+		margin-bottom: 2.5rem;
+	}
+
+	.main-nav {
+		margin-left: 0;
+	}
+
+	.menu > li:not(:last-child) {
+		margin-right: 2rem;
+	}
+
+	.menu > li > a {
+		padding-top: 2.95rem;
+		padding-bottom: 2.95rem;
+		padding-left: 0;
+		font-family: 'avenir lt pro' !important;
+	}
+
+	.sticky-header.fixed {
+		background-color: #333;
+	}
+
+	.mobile-menu-toggler {
+		margin-left: 0;
+	}
+}
+
+.header-hallo-beauty {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	z-index:1040;
+	background-color: transparent;
+	font-family: "avenir lt pro" !important;
+	font-weight: normal !important;
+
+
+	.header-middle {
+		border-bottom-color: rgb(250 250 250 / 0%);
+	}
+
+	.header-left,
+	.header-right {
+		flex: 1 1 1;
+	}
+
+	.header-center {
+		flex: 0 1 auto;
+	}
+
+	.header-right {
+		display: flex;
+		justify-content: flex-end;
+	}
+
+	.cart-dropdown,
+	.compare-dropdown {
+		padding-left: 2.3rem;
+
+		&:not(:hover):not(.show) {
+			.dropdown-toggle {
+				color: #201e1e;
+			}
+		}
+
+		.dropdown-menu {
+			margin-top: 0;
+		}
+	}
+
+	.header-search {
+		.header-search-wrapper {
+			border-color:  #fff;
+		}
+	}
+
+	.wishlist-link:not(:hover):not(:focus),
+	.search-toggle:not(:hover):not(:focus):not(.active),
+	.mobile-menu-toggler,
+	.wishlist-link:not(:hover):not(:focus),
+	.menu > li:not(:hover):not(.active):not(.show) > a,
+	.mobile-menu-toggler {
+		color: #201e1e;
+		font-family: 'avenir lt pro' !important;
+		font-weight: 100 !important;
+	}
+
+	.logo {
+		margin-top: 2.5rem;
+		margin-bottom: 2.5rem;
+	}
+
+	.main-nav {
+		margin-left: 0;
+	}
+
+	.menu > li:not(:last-child) {
+		margin-right: 2rem;
+	}
+
+	.menu > li > a {
+		padding-top: 2.95rem;
+		padding-bottom: 2.95rem;
+		padding-left: 0;
+		font-family: 'avenir lt pro' !important;
+		font-weight: 100 !important;
+	}
+
+	.sticky-header.fixed {
+		background-color: #ffffff;
+	}
+
+	.mobile-menu-toggler {
+		margin-left: 0;
+	}
+}
+
+.hallo-beauty{
+	padding: 4rem;
+
+	.heading {
+		padding: 1rem;
+		margin-bottom: 1rem !important;
+
+		.heading-title {
+			font-size: 5rem;
+			font-weight: 900;
+		}
+
+		.heading-subtitle {
+			font-size: 4rem;
+			font-weight: 100;
+		}
+	}
+
+	.heading-resume {
+		padding: 1rem;
+		margin-bottom: 1rem !important;
+
+		.title {
+			font-size: 2rem !important;
+			font-weight: 900 !important;
+			letter-spacing: -0.025em;
+			margin-bottom: 0.4rem;
+			font-family: "avenir lt pro" !important;
+		}
+
+		.subtitle {
+			font-size: 2.1rem !important;
+			font-weight: 100 !important;
+		}
+	}
+
+	.rounded{
+		border-radius: 2.25rem!important;
+	}
+
+	.search-key {
+		border: 0.1rem solid #FBE18A !important;
+		background: white;
+		color: #857e7e !important;
+		height: 5rem !important;
+		border-radius: 1.3rem ;
+		font-size: 16px;
+
+		&:placeholder {
+			color: #857e7e !important;
+			opacity: 1;
+		}
+
+	}
+
+	.button-group {
+		margin-bottom: 0rem;
+		padding: 1rem 0 3rem;
+
+		.btn-wrap {
+			padding:1.5px !important;
+			display: inline-block;
+			margin-bottom: 0rem !important;
+		}
+	}
+
+	.btn-rounded {
+		border-radius: 1.3rem !important;
+	}
+
+	.btn-outline-yellow {
+		border: 0.1rem solid #FBE18A !important;
+		color: black !important;
+
+		&:hover,
+		&:focus,
+		&:active  {
+			color: black !important;
+			background-color: #fbe18a !important;
+		}
+	}
+
+	.element {
+		display: flex !important;
+		flex-direction: row !important;
+		border: 0.1rem solid #ffe091!important;
+		border-radius: 2.25rem!important;
+
+		p{
+			margin-top: 2rem !important;
+			font-weight: 100 !important;
+		}
+
+		.element-icon {
+			width: 100px;
+			height: 100px;
+			transition: all 0.3s;
+			padding: 2rem;
+		}
+	}
+
+
+}
+
+.resume-dokter {
+    padding: 1rem;
+
+	strong{
+		font-weight: 900 !important;
+	}
+
+	ul {
+		border-left: 1px solid;
+		padding-left: 1.25rem;
+	}
+
+	li {
+		list-style-type: square;
+		padding-left: 1rem;
+		margin-left: 0.87rem;
+		font-size: 1.8rem !important;
+		color: #101010;
+
+	}
+
+	li::marker {
+		font-size: 3.2rem;
+	}
+}
+
+
+
+//banner-big
+.banner-big {
+    position: relative;
+    height: 700px;
+    background-position: -.7rem center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    .banner-content {
+        left: 2rem;
+        margin-top: -5rem;
+        max-width: 390px;
+        font-size: 1rem;
+    }
+
+    .banner-subtitle {
+        margin-bottom: .7rem;
+        font-size: 1.6rem;
+		.text-secondary{
+			color: #151616 !important;
+		}
+    }
+
+    .banner-title {
+        margin: 0 auto;
+        line-height: 6rem;
+		font-size: 4rem;
+		font-weight: 700;
+    }
+
+    .wave-img {
+        padding-top: .3rem;
+    }
+
+    p:last-of-type {    
+        margin-bottom: 3.1rem;
+        font-family: inherit;
+        font-size: 1.8em;
+        line-height: 3rem;
+        color: #222;
+    }
+
+    img {
+        margin: 0 auto;
+    }
+
+    .btn {
+        min-width: 20rem;
+        padding-top: 1.1rem;
+        padding-bottom: 1.1rem;
+
+        &:hover,
+        &:focus {
+            text-decoration: none;
+        }
+    }
+}
+
+@include mq('sm', 'max') {
+	.header-11 .cart-dropdown,
+	.header-11 .compare-dropdown {
+		padding-left: 1.4rem;
+	}
+
+	.header-11 .wishlist-link {
+		margin-left: 1.4rem;
+	}
+
+	.header-hallo-beauty .cart-dropdown,
+	.header-hallo-beauty .compare-dropdown {
+		padding-left: 1.4rem;
+	}
+
+	.header-hallo-beauty .wishlist-link {
+		margin-left: 1.4rem;
+	}
+}
+
+@include mq('md') {
+    .my-md-n5 {
+		margin-top: -9rem!important;
+		margin-bottom: -5rem!important;
+		position: relative;
+		z-index: 2;
+		background-color: white;
+		padding-top: 3rem;
+
+		.no-gutters {
+			margin-left: 0;
+			margin-right: 0;
+		}
+
+    }
+
+}
+
+@include mq('xl') {
+	.header-11 {
+		.menu > li:not(:last-child) {
+		margin-right: 1.2rem;
+		}
+	}
+
+	.header-hallo-beauty {
+		.menu > li:not(:last-child) {
+		margin-right: 1.2rem;
+		}
+	}
+}
+
+.product {
+	background-color: #f9f9f9;
+	border: .1rem solid transparent;
+	transition: border .35s;
+
+	&:not(.product-sm):hover {
+		border-color: #ebebeb;
+		.product-footer {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+
+}
+
+.product .btn {
+    padding: .6rem 1.5rem;
+}
+
+
+
+.product-body {
+    padding: 1.6rem 1.6rem 4rem;
+}
+
+.product-footer {
+    opacity: 0;
+    visibility: hidden;
+    transition: .5s;
+}
+
+.btn-dark-fav {
+	padding: 1.2rem 2.4rem;
+	background-color: transparent;
+	border: .2rem solid transparent;
+	border-bottom-color: #333;
+	color: #333;
+	min-width: 130px;
+
+	&:hover {
+		color: #fff;
+		background-color: #333;
+		border-color: #333;
+		text-decoration: none !important;
+	}
+
+	&.btn-primary {
+		color: $primary-color;
+		border-bottom-color: $primary-color;
+
+		&:hover {
+			color: #fff;
+			background-color: $primary-color;
+			border-color: $primary-color;
+		}
+	}
+}
+
+.heading-fav {
+	margin-bottom: 4.2rem;
+	position: relative;
+	font-family: 'avenir';
+
+	.title {
+		font-size: 3.8rem;
+		font-weight: 800;
+		line-height: 1;
+		letter-spacing: -.006em;
+		color: #222;
+		margin-bottom: 0.9r	em;
+		text-align: center;
+	}
+
+	.subtitle {
+		font-size: 1.8rem;
+		font-weight: 900;
+		line-height: 1;
+		letter-spacing: 0.1em;
+		color: #222;
+		text-align: center;
+	}
+}
+
+.trending-products-area{
+	background-color: #E9E5CC !important;
+}
+
+
+@include mq('xs', 'max') {
+    .ratings-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .ratings-text {
+        margin-left: 0;
+        margin-top: 1rem;
+    }
+
+    .product .btn {
+        min-width: auto;
+        padding-left: .3rem;
+        padding-right: .3rem;
+
+        i:first-child {
+            margin-right: 0;
+        }
+    }
+
+    .nav.nav-pills .nav-link {
+        font-size: 1rem;
+    }
+
+    .product.product-sm .ratings-container {
+        align-items: flex-start;
+    }
+}

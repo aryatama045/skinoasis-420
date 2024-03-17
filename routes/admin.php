@@ -97,16 +97,16 @@ Route::group(
         Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
         Route::get('/profile', [DashboardController::class, 'profile'])->name('admin.profile');
         Route::post('/profile', [DashboardController::class, 'updateProfile'])->name('admin.profile.update');
-        // Route::group(['prefix' => 'affiliate'], function () {
-        //         # affiliate
-        //         Route::get('/configurations', [AffiliateConfigurationsController::class, 'index'])->name('admin.affiliate.configurations');
+        Route::group(['prefix' => 'affiliate'], function () {
+                # affiliate
+                Route::get('/configurations', [AffiliateConfigurationsController::class, 'index'])->name('admin.affiliate.configurations');
 
-        //         # withdraw
-        //         Route::get('/withdraw-requests', [WithdrawRequestsController::class, 'index'])->name('affiliate.withdraw.index');
-        //         Route::post('/withdraw-requests', [WithdrawRequestsController::class, 'store'])->name('affiliate.withdraw.store');
-        //         Route::post('/update-requests', [WithdrawRequestsController::class, 'update'])->name('affiliate.withdraw.update');
-        //     }
-        // );
+                # withdraw
+                Route::get('/withdraw-requests', [WithdrawRequestsController::class, 'index'])->name('affiliate.withdraw.index');
+                Route::post('/withdraw-requests', [WithdrawRequestsController::class, 'store'])->name('affiliate.withdraw.store');
+                Route::post('/update-requests', [WithdrawRequestsController::class, 'update'])->name('affiliate.withdraw.update');
+            }
+        );
         # auth settings
         Route::get('/settings/auth', [SettingsController::class, 'authSettings'])->name('admin.settings.authSettings');
 

@@ -3,6 +3,10 @@
         class="{{ areActiveRoutes(['admin.appearance.homepage.hero']) }}">{{ localize('Hero Section') }}</a>
 </li>
 <li>
+    <a href="{{ route('admin.appearance.homepage.popularBrands') }}"
+        class="{{ areActiveRoutes(['admin.appearance.homepage.popularBrands']) }}">{{ localize('Popular Brands') }}</a>
+</li>
+<li>
     <a href="{{ route('admin.appearance.homepage.topCategories') }}"
         class="{{ areActiveRoutes(['admin.appearance.homepage.topCategories']) }}">{{ localize('Top Categories') }}</a>
 </li>

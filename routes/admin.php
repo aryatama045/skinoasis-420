@@ -23,6 +23,7 @@ use App\Http\Controllers\Backend\Products\TaxesController;
 use App\Http\Controllers\Backend\Products\UnitsController;
 use App\Http\Controllers\Backend\Rewards\WalletController;
 use App\Http\Controllers\Backend\Appearance\HeroController;
+use App\Http\Controllers\Backend\Appearance\HalloBeautyController;
 use App\Http\Controllers\Backend\BlogSystem\TagsController;
 use App\Http\Controllers\Backend\Products\BrandsController;
 use App\Http\Controllers\Backend\Refunds\RefundsController;
@@ -471,12 +472,23 @@ Route::group(
         # appearance
         Route::group(['prefix' => 'appearance'], function () {
 
+
+            # hallobeauty - hero
+            Route::get('/hallobeauty/hero', [HalloBeautyController::class, 'hero'])->name('admin.appearance.hallobeauty.hero');
+            Route::post('/hallobeauty/hero', [HalloBeautyController::class, 'storeHero'])->name('admin.appearance.hallobeauty.storeHero');
+            Route::get('/hallobeauty/hero/edit/{id}', [HalloBeautyController::class, 'edit'])->name('admin.appearance.hallobeauty.editHero');
+            Route::post('/hallobeauty/hero/update', [HalloBeautyController::class, 'update'])->name('admin.appearance.hallobeauty.updateHero');
+            Route::get('/hallobeauty/hero/delete/{id}', [HalloBeautyController::class, 'delete'])->name('admin.appearance.hallobeauty.deleteHero');
+
             # homepage - hero
             Route::get('/homepage/hero', [HeroController::class, 'hero'])->name('admin.appearance.homepage.hero');
             Route::post('/homepage/hero', [HeroController::class, 'storeHero'])->name('admin.appearance.homepage.storeHero');
             Route::get('/homepage/hero/edit/{id}', [HeroController::class, 'edit'])->name('admin.appearance.homepage.editHero');
             Route::post('/homepage/hero/update', [HeroController::class, 'update'])->name('admin.appearance.homepage.updateHero');
             Route::get('/homepage/hero/delete/{id}', [HeroController::class, 'delete'])->name('admin.appearance.homepage.deleteHero');
+
+            # homepage - brands
+            Route::get('/homepage/popular-brands', [AboutUsPageController::class, 'BrandsHomepage'])->name('admin.appearance.homepage.popularBrands');
 
             # homepage - top category
             Route::get('/homepage/top-category', [TopCategoriesController::class, 'index'])->name('admin.appearance.homepage.topCategories');

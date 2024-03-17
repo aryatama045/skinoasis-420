@@ -727,8 +727,9 @@
 
     <!-- Grocery -->
     @php
-        $groceryActiveRoutes = [
+        $homepageActiveRoutes = [
             'admin.appearance.homepage.hero',
+            'admin.appearance.homepage.popularBrands',
             'admin.appearance.homepage.editHero',
             'admin.appearance.homepage.topCategories',
             'admin.appearance.homepage.topTrendingProducts',
@@ -742,17 +743,29 @@
             'admin.appearance.homepage.bestSelling',
             'admin.appearance.homepage.customProductsSection',
         ];
+        $halloBeautyActiveRoutes = [
+        ];
     @endphp
 
     @canany(['homepage'])
 
         @can('homepage')
-            <li class="side-nav-item nav-item {{ areActiveRoutes($groceryActiveRoutes, 'tt-menu-item-active') }}">
+            <li class="side-nav-item nav-item {{ areActiveRoutes($homepageActiveRoutes, 'tt-menu-item-active') }}">
                 <a href="{{ route('admin.appearance.homepage.hero') }}"
-                    class="side-nav-link {{ areActiveRoutes($groceryActiveRoutes) }}">
+                    class="side-nav-link {{ areActiveRoutes($homepageActiveRoutes) }}">
                     <span class="tt-nav-link-icon"><i data-feather="home"></i></span>
                     <span class="tt-nav-link-text">
                         <span class="tt-nav-link-text"> {{ localize('Homepage') }}</span>
+                    </span>
+                </a>
+            </li>
+
+            <li class="side-nav-item nav-item {{ areActiveRoutes($halloBeautyActiveRoutes, 'tt-menu-item-active') }}">
+                <a href="{{ route('admin.appearance.hallobeauty.hero') }}"
+                    class="side-nav-link {{ areActiveRoutes($halloBeautyActiveRoutes) }}">
+                    <span class="tt-nav-link-icon"><i data-feather="home"></i></span>
+                    <span class="tt-nav-link-text">
+                        <span class="tt-nav-link-text"> {{ localize('Hallo Beauty') }}</span>
                     </span>
                 </a>
             </li>

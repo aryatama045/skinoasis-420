@@ -29,6 +29,12 @@ class AboutUsPageController extends Controller
         return view('backend.pages.appearance.aboutUs.popularBrands', compact('brands'));
     }
 
+    public function BrandsHomepage()
+    {
+        $brands = Brand::isActive()->get();
+        return view('backend.pages.appearance.homepage.brandSection', compact('brands'));
+    }
+
     # get the features
     private function getFeatures()
     {

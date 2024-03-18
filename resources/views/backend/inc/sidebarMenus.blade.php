@@ -283,13 +283,57 @@
     @endcan
 
     <!-- staffs -->
+    @php
+        $personActiveRoutes = ['admin.staffs.index', 'admin.staffs.create', 'admin.staffs.edit',
+                                'admin.staffs.mitra', 'admin.staffs.createmitra', 'admin.staffs.editmitra',
+                                'admin.staffs.dokter', 'admin.staffs.createdokter', 'admin.staffs.editdokter',
+                                'admin.staffs.klinik', 'admin.staffs.createklinik', 'admin.staffs.editklinik'];
+    @endphp
+
     @can('staffs')
-        <li
-            class="side-nav-item nav-item {{ areActiveRoutes(['admin.staffs.index', 'admin.staffs.create', 'admin.staffs.edit'], 'tt-menu-item-active') }}">
-            <a href="{{ route('admin.staffs.index') }}" class="side-nav-link">
-                <span class="tt-nav-link-icon"> <i data-feather="user-check"></i></span>
-                <span class="tt-nav-link-text">{{ localize('Employee Staffs') }}</span>
+
+        <li class="side-nav-item nav-item {{ areActiveRoutes($personActiveRoutes, 'tt-menu-item-active') }}">
+            <a data-bs-toggle="collapse" href="#managePerson"
+                aria-expanded="{{ areActiveRoutes($personActiveRoutes, 'true') }}" aria-controls="managePerson"
+                class="side-nav-link tt-menu-toggle">
+                <span class="tt-nav-link-icon"><i data-feather="users"></i></span>
+                <span class="tt-nav-link-text">{{ localize('Manage Person') }}</span>
             </a>
+            <div class="collapse {{ areActiveRoutes($personActiveRoutes, 'show') }}" id="managePerson">
+                <ul class="side-nav-second-level">
+                    <!-- # dokter -->
+                    <li class="{{ areActiveRoutes(['admin.staffs.dokter', 'admin.staffs.createdokter', 'admin.staffs.editdokter'], 'tt-menu-item-active') }}">
+                        <a href="{{ route('admin.staffs.dokter') }}"
+                            class="{{ areActiveRoutes(['admin.staffs.dokter', 'admin.staffs.createdokter', 'admin.staffs.editdokter']) }}">
+                            Dokter
+                        </a>
+                    </li>
+
+                    <!-- #klinik -->
+                    <li class="{{ areActiveRoutes(['admin.staffs.klinik', 'admin.staffs.createklinik', 'admin.staffs.editklinik'], 'tt-menu-item-active') }}">
+                        <a href="{{ route('admin.staffs.klinik') }}"
+                            class="{{ areActiveRoutes(['admin.staffs.klinik', 'admin.staffs.createklinik', 'admin.staffs.editklinik']) }}">
+                            Klinik
+                        </a>
+                    </li>
+
+                    <!-- # mitra -->
+                    <li class="{{ areActiveRoutes(['admin.staffs.mitra', 'admin.staffs.createmitra', 'admin.staffs.editmitra'], 'tt-menu-item-active') }}">
+                        <a href="{{ route('admin.staffs.mitra') }}"
+                            class="{{ areActiveRoutes(['admin.staffs.mitra', 'admin.staffs.createmitra', 'admin.staffs.editmitra']) }}">
+                            Mitra
+                        </a>
+                    </li>
+
+                    <!-- # staff -->
+                    <li class="{{ areActiveRoutes(['admin.staffs.index', 'admin.staffs.create', 'admin.staffs.edit'], 'tt-menu-item-active') }}">
+                        <a href="{{ route('admin.staffs.index') }}"
+                            class="{{ areActiveRoutes(['admin.staffs.index', 'admin.staffs.create', 'admin.staffs.edit']) }}">
+                            Staff
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </li>
     @endcan
 

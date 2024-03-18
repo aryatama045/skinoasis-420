@@ -580,6 +580,17 @@ Route::group(
             Route::get('/update-staff/{id}', [StaffsController::class, 'edit'])->name('admin.staffs.edit');
             Route::post('/update-staff', [StaffsController::class, 'update'])->name('admin.staffs.update');
             Route::get('/delete-staff/{id}', [StaffsController::class, 'delete'])->name('admin.staffs.delete');
+
+            Route::get('/dokter', [StaffsController::class, 'dokter'])->name('admin.staffs.dokter');
+            Route::get('/klinik', [StaffsController::class, 'klinik'])->name('admin.staffs.klinik');
+            Route::get('/mitra', [StaffsController::class, 'mitra'])->name('admin.staffs.mitra');
+            Route::get('/add-dokter', [StaffsController::class, 'createdokter'])->name('admin.staffs.createdokter');
+            Route::get('/add-klinik', [StaffsController::class, 'createklinik'])->name('admin.staffs.createklinik');
+            Route::get('/add-mitra', [StaffsController::class, 'createmitra'])->name('admin.staffs.createmitra');
+            Route::get('/update-mitra/{id}', [StaffsController::class, 'editmitra'])->name('admin.staffs.editmitra');
+            Route::get('/update-dokter/{id}', [StaffsController::class, 'editdokter'])->name('admin.staffs.editdokter');
+            Route::get('/update-klinik/{id}', [StaffsController::class, 'editklinik'])->name('admin.staffs.editklinik');
+            Route::post('/update-data', [StaffsController::class, 'update'])->name('admin.staffs.update');
         });
 
         # delivery-man
@@ -618,22 +629,22 @@ Route::group(
 
 
         // system Update
-         Route::get('/settings/update-system', [UpdateController::class, 'about'])->name('admin.about-update');
-         Route::post('/settings/update-system', [UpdateController::class, 'versionUpdateInstall'])->name('admin.system.update-version');
+        Route::get('/settings/update-system', [UpdateController::class, 'about'])->name('admin.about-update');
+        Route::post('/settings/update-system', [UpdateController::class, 'versionUpdateInstall'])->name('admin.system.update-version');
 
 
-         Route::get('/settings/update', [SystemUpdateController::class, 'index'])->name('system.update');
-         Route::get('/settings/checkServerConnection', [SystemUpdateController::class, 'checkServerConnection'])->name('system.checkServerConnection');
-         Route::get('/settings/healthCheck', [SystemUpdateController::class, 'healthCheck'])->name('system.healthCheck');
-         Route::get('/settings/file-permission', [FilePermissionController::class, 'index'])->name('system.file-permission')->middleware('admin');
+        Route::get('/settings/update', [SystemUpdateController::class, 'index'])->name('system.update');
+        Route::get('/settings/checkServerConnection', [SystemUpdateController::class, 'checkServerConnection'])->name('system.checkServerConnection');
+        Route::get('/settings/healthCheck', [SystemUpdateController::class, 'healthCheck'])->name('system.healthCheck');
+        Route::get('/settings/file-permission', [FilePermissionController::class, 'index'])->name('system.file-permission')->middleware('admin');
 
 
-         Route::post('/license-store', [LicenseController::class, 'store'])->name('admin.settings.license.store');
-         Route::post('/system/health-check', [LicenseController::class, 'healthCheck'])->name('system.heath-check');
+        Route::post('/license-store', [LicenseController::class, 'store'])->name('admin.settings.license.store');
+        Route::post('/system/health-check', [LicenseController::class, 'healthCheck'])->name('system.heath-check');
 
-         Route::get('/utilities', [UtilityController::class, 'index'])->name('admin.utilities');
-         Route::get('/clear-cache', [UtilityController::class, 'clearCache'])->name('admin.clear-cache');
-         Route::get('/clear-log', [UtilityController::class, 'clearLog'])->name('admin.clearLog');
-         Route::get('/debug', [UtilityController::class, 'debug'])->name('admin.debug');
+        Route::get('/utilities', [UtilityController::class, 'index'])->name('admin.utilities');
+        Route::get('/clear-cache', [UtilityController::class, 'clearCache'])->name('admin.clear-cache');
+        Route::get('/clear-log', [UtilityController::class, 'clearLog'])->name('admin.clearLog');
+        Route::get('/debug', [UtilityController::class, 'debug'])->name('admin.debug');
     }
 );

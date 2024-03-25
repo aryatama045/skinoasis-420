@@ -32,6 +32,6 @@
     @endif
 @endif
 
-@if ($product->unit)
+<!-- @if ($product->unit)
     <small>/{{ $product->unit->collectLocalization('name') }}</small>
-@endif
+@endif -->

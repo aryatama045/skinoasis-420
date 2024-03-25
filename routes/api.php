@@ -16,10 +16,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-
-
-
 Route::middleware(['auth:sanctum','isBanned'])->group( function () {
         Route::get("logout",[AuthController::class,"logout"]);
 
@@ -94,7 +90,7 @@ Route::controller(ProductController::class)->group(function(){
     Route::get('products/best-selling',"bestSelling");
     Route::get('products/variation-details',"variationDetails");
     Route::get('products/{slug}',"show");
-    // Route::post('products/show-product-info',"trendingProducts");
+    Route::post('products/show-product-info',"trendingProducts");
 });
 Route::controller(CategoryController::class)->group(function(){
     Route::get('category/all',"index");
@@ -113,20 +109,17 @@ Route::controller(LogisticController::class)->group(function(){
 
 Route::controller(BannerController::class)->group(function(){
     Route::get('banner/home',"homeBanner");
-   // Route::get('banner/second',"secondBanner");
 });
 Route::controller(ScheduleDeliveryTimeController::class)->group(function(){
     Route::get('time-slot',"index");
-   // Route::get('banner/second',"secondBanner");
 });
 Route::controller(PaymentTypesController::class)->group(function(){
     Route::get('payment-types',"index");
-   // Route::get('banner/second',"secondBanner");
 });
 
 Route::controller(SettingController::class)->group(function(){
     Route::get('settings',"index");
-   Route::get('settings/help-center',"contactInfo");
+    Route::get('settings/help-center',"contactInfo");
 });
 Route::controller(PageController::class)->group(function(){
     Route::get('pages/{slug}',"index");
@@ -135,8 +128,8 @@ Route::controller(LanguageController::class)->group(function(){
     Route::get('languages',"index");
 });
 
+# Activated Payment online
+Route::controller(OrderController::class)->group(function(){
+    Route::get("order/online-payment","onlinePay");
 
-// Route::controller(OrderController::class)->group(function(){
-//     Route::get("order/online-payment","onlinePay");
-    
-// });
+});

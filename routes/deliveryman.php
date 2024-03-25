@@ -25,10 +25,10 @@ Route::group(
         Route::get('/', [DashboardController::class, 'index'])->name('deliveryman.dashboard');
         Route::get('/profile', [DashboardController::class, 'profile'])->name('deliveryman.profile');
         Route::post('/profile', [DashboardController::class, 'updateProfile'])->name('deliveryman.profile.update'); 
-        
+
         # orders
         Route::group(['prefix' => 'orders'],
-            function () { 
+            function () {
                 Route::get('/details/{id}', [DeliveryOrdersController::class, 'show'])->name('deliveryman.show');
                 Route::get('/assigned', [DeliveryOrdersController::class, 'assigned'])->name('deliveryman.assigned');   
                 Route::get('/picked-up', [DeliveryOrdersController::class, 'pickedUp'])->name('deliveryman.pickedUp');   
@@ -37,7 +37,7 @@ Route::group(
                 Route::get('/cancelled', [DeliveryOrdersController::class, 'cancelled'])->name('deliveryman.cancelled');  
 
                 Route::get('/earnings-history', [DeliveryOrdersController::class, 'earningHistory'])->name('deliveryman.earning-history');  
-                
+
                 # updateDeliveryStatus
                 Route::post('/update-delivery-status', [DeliveryOrdersController::class, 'updateDeliveryStatus'])->name('deliveryman.updateDeliveryStatus');  
                 Route::post('/cancel/orders/{order}', [DeliveryOrdersController::class, 'cancelOrder'])->name('deliveryman.cancel.order');  
@@ -48,6 +48,6 @@ Route::group(
                 #downloadInvoice
                 Route::get('/invoice-download/{id}', [OrdersController::class, 'downloadInvoice'])->name('deliveryman.downloadInvoice');
             }
-        );     
+        );
     }
 );

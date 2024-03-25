@@ -41,7 +41,7 @@ use App\Http\Controllers\Backend\Payments\Stripe\StripePaymentController;
 
 
 Route::get("test/test", function(){
-   
+
 });
 Route::get('test/test', [TestController::class, 'index']);
 Auth::routes(['verify' => true]);

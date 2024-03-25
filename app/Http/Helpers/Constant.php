@@ -1421,3 +1421,26 @@ if(!function_exists('appStatic')){
     }
 }
 
+
+if (!function_exists('getTimeAgo')) {
+    function getTimeAgo($datetime)
+    {
+        $now = new \DateTime();
+        $ago = new \DateTime($datetime);
+        $diff = $now->diff($ago);
+        $interval = $diff->format('%a');
+        if ($interval == 0) {
+            return 'Today';
+        } elseif ($interval == 1) {
+            return 'Yesterday';
+        } elseif ($interval < 7) {
+            return $diff->format('%a Days ago');
+        } elseif ($interval < 30) {
+            return $diff->format('%w Weeks ago');
+        } elseif ($interval < 365) {
+            return $diff->format('%m Months ago');
+        } else {
+            return $diff->format('%y Years ago');
+        }
+    }
+}

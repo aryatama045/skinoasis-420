@@ -9,12 +9,29 @@ use App\Models\ProductCategory;
 use App\Models\ProductTag;
 use App\Models\ProductVariation;
 use App\Models\Tag;
+use App\Models\Testimoni;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
     # product listing
     public function index(Request $request)
+    {
+        $searchKey = null;
+        $limit = 8;
+
+        $product = Product::where('is_popular', 1)->get();
+        // dd($kategori);
+        $tags = Tag::all();
+        return getView('pages.products.index', [
+            'product'      => $product,
+            'tags'          => $tags,
+        ]);
+    }
+
+
+
+    public function allProduct(Request $request)
     {
         $searchKey = null;
         $per_page = 9;
@@ -61,6 +78,13 @@ class ProductController extends Controller
             $products = $products->whereIn('id', $product_category_product_ids);
         }
 
+        # by brand
+        if ($request->brand_id && $request->brand_id != null) {
+            // $product_category_product_ids = Product::where('brand_id', $request->brand_id)->get();
+            // dd($request->brand_id);
+            $products = $products->where('brand_id', $request->brand_id);
+        }
+
         # by tag
         if ($request->tag_id && $request->tag_id != null) {
             $product_tag_product_ids = ProductTag::where('tag_id', $request->tag_id)->pluck('product_id');
@@ -71,7 +95,7 @@ class ProductController extends Controller
         $products = $products->paginate(paginationNumber($per_page));
 
         $tags = Tag::all();
-        return getView('pages.products.index', [
+        return getView('pages.products.allproduct', [
             'products'      => $products,
             'searchKey'     => $searchKey,
             'per_page'      => $per_page,
@@ -103,12 +127,18 @@ class ProductController extends Controller
 
             $relatedProducts                = Product::whereIn('id', $productIdsWithTheseCategories)->get();
 
+            $review     = Testimoni::leftJoin('users', 'product_testimoni.customer_id', '=', 'users.id' )
+                        ->where('product_testimoni.product_id', '=', $product->id)
+                        ->where('product_testimoni.is_banned', '!=', '1')
+                        ->select('users.name as name_user', 'product_testimoni.title', 'product_testimoni.rating', 'product_testimoni.comment', 'product_testimoni.created_at as tanggal')
+                        ->get();
+
             $product_page_widgets = [];
             if (getSetting('product_page_widgets') != null) {
                 $product_page_widgets = json_decode(getSetting('product_page_widgets'));
             }
 
-            return getView('pages.products.show', ['product' => $product, 'relatedProducts' => $relatedProducts, 'product_page_widgets' => $product_page_widgets]);
+            return getView('pages.products.show', ['review' => $review , 'product' => $product, 'relatedProducts' => $relatedProducts, 'product_page_widgets' => $product_page_widgets]);
         }
         catch(\Throwable $e){
             return view('errors.not_found');

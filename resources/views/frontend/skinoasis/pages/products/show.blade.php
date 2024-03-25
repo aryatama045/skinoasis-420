@@ -62,11 +62,6 @@
 
 @section('contents')
 
-    <!-- <div class="page-header text-center" style="background-image: url('{{ staticAsset('frontend/skinoasis/assets/images/page-header-bg.jpg') }}')">
-        <div class="container">
-            <h1 class="page-title"> <span> @yield('title', getSetting('system_title'))</span></h1>
-        </div>
-    </div> -->
     <br>
     <center>
         <div>
@@ -128,7 +123,7 @@
 
 
                             <div class="product-price">
-                                @include('frontend.default.pages.partials.products.pricing', compact('product'))
+                                @include('frontend.skinoasis.pages.partials.products.pricing', compact('product'))
                             </div><!-- End .product-price -->
 
                             <!-- selected variation pricing -->
@@ -162,7 +157,7 @@
                                     @if (!$isVariantProduct) value="{{ $product->variations[0]->id }}" @endif>
 
                                 <!-- variations -->
-                                @include('frontend.default.pages.partials.products.variations', compact('product'))
+                                @include('frontend.skinoasis.pages.partials.products.variations', compact('product'))
                                 <!-- variations -->
 
                                 <div class="d-flex align-items-center gap-3 flex-wrap mt-5">

@@ -139,7 +139,7 @@
                         <tbody>
                           
                           <tr>
-                            <td class="fw-semibold ps-3">{{localize('Ttile')}}</td>
+                            <td class="fw-semibold ps-3">{{localize('Title')}}</td>
                             <td class="text-muted pe-3">{{$ticket->title}}</td>
                           </tr>
                           <tr>

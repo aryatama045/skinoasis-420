@@ -4,7 +4,7 @@
 </div>
 
 <footer class="gshop-footer position-relative pt-8 bg-dark z-1 overflow-hidden">
-    @include('frontend.default.inc.footerBgImages.' . getTheme())
+    <!-- @include('frontend.default.inc.footerBgImages.' . getTheme()) -->
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-5 col-lg-6">
